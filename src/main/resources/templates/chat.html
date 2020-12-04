@@ -1,10 +1,36 @@
+
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Spring Boot WebSocket</title>
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<!-- https://cdnjs.com/libraries/sockjs-client -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjsclient/1.1.4/sockjs.min.js"></script>
+<!-- https://cdnjs.com/libraries/stomp.js/ -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 </head>
 <body>
-
+<div id="chat-container">
+<div class="chat-header">
+<div class="user-container">
+<span id="username" th:utext="${username}"></span>
+<a th:href="@{/logout}">Deconnexion</a>
+</div>
+<h3>Spring WebSocket Chat Demonstration</h3>
+</div>
+<hr/>
+<div id="connecting">Connection...</div>
+<ul id="messageArea">
+</ul>
+<form id="messageForm" name="messageForm">
+<div class="input-message">
+<input type="text" id="message" autocomplete="off"
+placeholder="Taper un message..."/>
+<button type="submit">Envoyer</button>
+</div>
+</form>
+</div>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>
